@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EVS CAT-II — Study Desk</title>
-  <meta name="description" content="Focused EVS CAT-II revision notes, diagrams, tables, flashcards and MCQs." />
+  <title>EVS CAT-II — Revision Workspace</title>
+  <meta name="description" content="EVS CAT-II revision workspace with detailed notes, diagrams, tables, flashcards and MCQs." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,13 +12,23 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">EVS</div>
-        <div><strong>CAT-II</strong><span>Study Desk</span></div>
+        <div><strong>CAT-II</strong><span>Revision Workspace</span></div>
       </div>
 
-      <div class="exam-card">
-        <div class="eyebrow">REVISION PROGRESS</div>
-        <div class="progress-row"><span id="progressLabel">0% revised</span><span id="progressCount">0/26</span></div>
+      <button class="course-home" id="homeBtn">
+        <span class="home-icon">⌂</span>
+        <span><strong>Course overview</strong><small>26 topics · 63 questions</small></span>
+      </button>
+
+      <div class="side-search">
+        <span>⌕</span>
+        <input id="sideSearch" placeholder="Find a topic…" />
+      </div>
+
+      <div class="side-progress">
+        <div><span>REVISED</span><strong id="progressLabel">0%</strong></div>
         <div class="progress"><i id="progressBar"></i></div>
+        <small id="progressCount">0 / 26 topics</small>
       </div>
 
       <nav id="topicNav"></nav>
@@ -32,31 +42,28 @@
     <main class="main">
       <header class="topbar">
         <button class="menu-btn" id="menuBtn" aria-label="Open topic menu" aria-expanded="false">☰</button>
-        <div class="top-title"><span>ENVIRONMENTAL SCIENCE</span><strong>CAT-II Revision</strong></div>
-        <div class="search-wrap">
-          <span>⌕</span><input id="search" placeholder="Search topics, definitions, Acts, numbers…" />
-          <kbd>Ctrl K</kbd>
+        <div class="crumb"><span>EVS</span><b>/</b><strong id="crumbCurrent">Course overview</strong></div>
+        <div class="mode-switch">
+          <button class="mode active" id="notesMode">Notes</button>
+          <button class="mode" id="flashMode">Flashcards</button>
+          <button class="mode" id="testMode">Test</button>
         </div>
-        <button class="ghost-btn" id="reviewBtn">Back to notes</button>
+        <div class="top-search">
+          <span>⌕</span><input id="search" placeholder="Search notes, Acts, definitions…" /><kbd>Ctrl K</kbd>
+        </div>
       </header>
 
-      <div class="study-toolbar">
-        <div class="toolbar-left">
-          <span class="mode-dot"></span>
-          <span>Focused study</span>
-          <span class="toolbar-sep">/</span>
-          <span>26 topics · 63 questions</span>
-        </div>
-        <div class="toolbar-actions">
-          <button class="secondary" id="startBtn">Start from beginning</button>
-          <button class="secondary" id="randomBtn">Random topic</button>
+      <div class="focusbar">
+        <div><span class="live-dot"></span><span>Focused study</span><span class="divider">/</span><span id="topicMeta">Choose a topic to begin</span></div>
+        <div class="focus-actions">
+          <button class="tiny-btn" id="prevBtn">← Previous</button>
+          <button class="tiny-btn" id="nextBtn">Next →</button>
+          <button class="tiny-btn" id="focusBtn">Focus mode</button>
         </div>
       </div>
 
       <section id="content" class="content"></section>
       <section id="practice" class="practice hidden"></section>
-
-      <footer>EVS CAT-II · built from the supplied course material</footer>
     </main>
   </div>
   <script src="app.js"></script>
