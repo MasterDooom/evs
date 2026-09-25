@@ -57,6 +57,7 @@ function topicMarkup(t,i){
       '<div class="doc-tools"><span class="yield '+(t.p==='high'?'high':t.p==='med'?'med':'low')+'">'+(t.p==='high'?'HIGH YIELD':t.p==='med'?'MEDIUM':'QUICK SCAN')+'</span>'+
       '<button class="complete-btn '+(done[i]?'done':'')+'" id="completeBtn">'+(done[i]?'✓ Revised':'Mark revised')+'</button></div>'+
     '</header>'+
+    '<div class="page-nav"><button class="page-arrow" '+(previous?'':'disabled')+' data-nav="'+(i-1)+'">←</button><span>PAGE <strong>'+String(i+1).padStart(2,'0')+'</strong> / '+String(topics.length).padStart(2,'0')+'</span><button class="page-arrow" '+(next?'':'disabled')+' data-nav="'+(i+1)+'">→</button></div>'+
     '<div class="document-grid">'+
       '<main class="document-body">'+
         '<section class="doc-section overview"><div class="section-label"><span>01</span> OVERVIEW</div><p>'+esc(t.must?.[0]||t.sub)+'</p></section>'+
@@ -137,5 +138,11 @@ document.getElementById('focusBtn').onclick=()=>document.body.classList.toggle('
 document.getElementById('menuBtn').onclick=()=>{const s=document.getElementById('sidebar'),open=!s.classList.contains('open');s.classList.toggle('open',open);document.getElementById('menuBtn').setAttribute('aria-expanded',String(open))};
 document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();if(!q){showHome();return}const match=topics.findIndex(t=>JSON.stringify(t).toLowerCase().includes(q));if(match>=0)openTopic(match)});
 document.getElementById('sideSearch').addEventListener('input',e=>renderNav(e.target.value.toLowerCase().trim()));
-window.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();document.getElementById('search').focus()}});
+window.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();document.getElementById('search').focus();return}
+  if(currentIndex>=0 && !e.ctrlKey && !e.metaKey && !e.altKey && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){
+    if(e.key==='ArrowLeft') navigate(-1);
+    if(e.key==='ArrowRight') navigate(1);
+  }
+});
 renderNav();updateProgress();showHome();
