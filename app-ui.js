@@ -125,7 +125,7 @@ function showFlashcards(){
 function closeMobile(){if(innerWidth<900){document.getElementById('sidebar').classList.remove('open');document.getElementById('menuBtn').setAttribute('aria-expanded','false')}}
 function navigate(delta){if(currentIndex<0){openTopic(delta>0?0:topics.length-1);return}openTopic(Math.max(0,Math.min(topics.length-1,currentIndex+delta)))}
 
-document.getElementById('homeBtn').onclick=showHome;
+document.getElementById('homeBtn').onclick=showHome;document.getElementById('brandHome').onclick=showHome;
 document.getElementById('practiceBtn').onclick=showPractice;
 document.getElementById('testMode').onclick=showPractice;
 document.getElementById('flashBtn').onclick=showFlashcards;
