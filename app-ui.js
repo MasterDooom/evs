@@ -1,6 +1,6 @@
 const topics=window.EVS_TOPICS||[]; const questions=window.EVS_QUESTIONS||[];
 const nav=document.getElementById('topicNav'),content=document.getElementById('content'),practice=document.getElementById('practice');
-let done={}; try{done=JSON.parse(localStorage.getItem('evsDone')||'{}')||{}; if(typeof done!=='object'||Array.isArray(done))done={}}catch(_){done={}}
+const done=JSON.parse(localStorage.getItem('evsDone')||'{}');
 let currentIndex=-1;
 
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -25,7 +25,7 @@ function renderNav(filter=''){
 }
 function updateProgress(){
   const n=Object.values(done).filter(Boolean).length;
-  const pct=topics.length?Math.round(n/topics.length*100):0;
+  const pct=Math.round(n/topics.length*100);
   document.getElementById('progressCount').textContent=n+' / '+topics.length+' topics';
   document.getElementById('progressLabel').textContent=pct+'%';
   document.getElementById('progressBar').style.width=pct+'%';
@@ -103,7 +103,6 @@ function showHome(){
 function currentProgressTopic(){for(let i=0;i<topics.length;i++)if(!done[i])return i;return null}
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function showPractice(){
-  currentIndex=-1;
   setMode('test');practice.classList.remove('hidden');content.classList.add('hidden');document.getElementById('crumbCurrent').textContent='30-question test';document.getElementById('topicMeta').textContent='Active recall · answer before checking';
   const selected=shuffle([...questions]).slice(0,30);
   practice.innerHTML='<div class="test-page"><div class="test-head"><div><div class="doc-kicker">ACTIVE RECALL</div><h1>30-question rapid test</h1><p>Commit to an answer before the correct option is revealed.</p></div><div class="test-score" id="score">0 <small>/ 30</small></div></div>'+selected.map((q,i)=>'<div class="test-q"><div class="q-meta"><span>QUESTION '+String(i+1).padStart(2,'0')+'</span></div><h3>'+esc(q[0])+'</h3><div class="options">'+q[1].map((o,j)=>'<button class="opt" data-q="'+i+'" data-a="'+j+'"><span>'+String.fromCharCode(65+j)+'</span>'+esc(o)+'</button>').join('')+'</div><div class="answer"></div></div>').join('')+'</div>';
@@ -112,7 +111,6 @@ function showPractice(){
   window.scrollTo({top:0,behavior:'smooth'});closeMobile();
 }
 function showFlashcards(){
-  currentIndex=-1;
   setMode('flash');practice.classList.remove('hidden');content.classList.add('hidden');document.getElementById('crumbCurrent').textContent='Flashcards';document.getElementById('topicMeta').textContent='Active recall · reveal only after thinking';
   const pool=topics.flatMap((t,ti)=>t.must.map((fact,fi)=>({topic:t.title,fact,ti,fi})));let index=0,known=0;
   function draw(){
