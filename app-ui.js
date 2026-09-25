@@ -60,10 +60,10 @@ function topicMarkup(t,i){
     '<div class="document-grid">'+
       '<main class="document-body">'+
         '<section class="doc-section overview"><div class="section-label"><span>01</span> OVERVIEW</div><p>'+esc(t.must?.[0]||t.sub)+'</p></section>'+
-        '<section class="doc-section"><div class="section-label"><span>02</span> CORE CONCEPTS</div>'+cardList(t.must.slice(1))+'</section>'+
+        '<section class="doc-section concepts-section"><div class="section-label"><span>02</span> CORE CONCEPTS</div>'+cardList(t.must.slice(1))+'</section>'+
         '<section class="doc-section visual-section"><div class="section-label"><span>03</span> VISUAL MODEL</div><p class="section-hint">Use the sequence below to recall the structure without rereading the paragraph.</p>'+flow(t)+table(t)+'</section>'+
-        '<section class="doc-section"><div class="section-label"><span>04</span> EXAM TRAPS</div><div class="trap-list">'+t.traps.map((x,j)=>'<div class="trap-row"><span>!</span><p>'+esc(x)+'</p></div>').join('')+'</div></section>'+
-        '<section class="doc-section remember-section"><div class="section-label"><span>05</span> 30-SECOND RECALL</div><div class="recall-grid">'+t.must.slice(0,4).map((x,j)=>'<div><b>'+String(j+1).padStart(2,'0')+'</b><p>'+esc(x)+'</p></div>').join('')+'</div></section>'+
+        '<section class="doc-section traps-section"><div class="section-label"><span>04</span> EXAM TRAPS</div><div class="trap-list">'+t.traps.map((x,j)=>'<div class="trap-row"><span>!</span><p>'+esc(x)+'</p></div>').join('')+'</div></section>'+
+        '<section class="doc-section recall-section remember-section"><div class="section-label"><span>05</span> 30-SECOND RECALL</div><div class="recall-grid">'+t.must.slice(0,4).map((x,j)=>'<div><b>'+String(j+1).padStart(2,'0')+'</b><p>'+esc(x)+'</p></div>').join('')+'</div></section>'+
         '<div class="topic-pagination"><button '+(previous?'':'disabled')+' data-nav="'+(i-1)+'">← '+(previous?esc(previous.title):'Previous')+'</button><button '+(next?'':'disabled')+' data-nav="'+(i+1)+'">'+(next?esc(next.title):'Next')+' →</button></div>'+
       '</main>'+
       '<aside class="doc-rail">'+
