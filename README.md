@@ -21,7 +21,7 @@ Open `http://localhost:5173`.
 
 ## Included
 
-- 27 course topics condensed into high-yield exam notes
+- 26 course topics condensed into high-yield exam notes
 - Definitions + key facts + MCQ traps
 - Visual recall flowcharts
 - Search across the syllabus
