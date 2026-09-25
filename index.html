@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EVS CAT-II — Rapid Revision</title>
-  <meta name="description" content="Exam-focused EVS CAT-II revision notes with visual explanations and MCQs." />
+  <title>EVS CAT-II — Study Desk</title>
+  <meta name="description" content="Focused EVS CAT-II revision notes, diagrams, tables, flashcards and MCQs." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,58 +12,51 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">EVS</div>
-        <div><strong>CAT-II</strong><span>Rapid Revision</span></div>
+        <div><strong>CAT-II</strong><span>Study Desk</span></div>
       </div>
+
       <div class="exam-card">
-        <div class="eyebrow">30 MCQs · last-minute mode</div>
+        <div class="eyebrow">REVISION PROGRESS</div>
         <div class="progress-row"><span id="progressLabel">0% revised</span><span id="progressCount">0/26</span></div>
         <div class="progress"><i id="progressBar"></i></div>
       </div>
+
       <nav id="topicNav"></nav>
-      <div class="sidebar-actions"><button class="sidebar-btn" id="practiceBtn">Test yourself · 30 MCQs</button><button class="sidebar-btn secondary-sidebar" id="flashBtn">Flashcards</button></div>
+
+      <div class="sidebar-actions">
+        <button class="sidebar-btn" id="practiceBtn">Test · 30 MCQs</button>
+        <button class="sidebar-btn secondary-sidebar" id="flashBtn">Flashcards</button>
+      </div>
     </aside>
 
     <main class="main">
       <header class="topbar">
         <button class="menu-btn" id="menuBtn" aria-label="Open topic menu" aria-expanded="false">☰</button>
+        <div class="top-title"><span>ENVIRONMENTAL SCIENCE</span><strong>CAT-II Revision</strong></div>
         <div class="search-wrap">
-          <span>⌕</span><input id="search" placeholder="Search any topic, definition, Act, number…" />
+          <span>⌕</span><input id="search" placeholder="Search topics, definitions, Acts, numbers…" />
           <kbd>Ctrl K</kbd>
         </div>
-        <button class="ghost-btn" id="reviewBtn">Review checklist</button>
+        <button class="ghost-btn" id="reviewBtn">Back to notes</button>
       </header>
 
-      <section class="hero">
-        <div>
-          <div class="eyebrow">ENVIRONMENTAL SCIENCE · EXAM MODE</div>
-          <h1>Learn the concept.<br><em>Recognise it in the MCQ.</em></h1>
-          <p>Every topic is compressed into definitions, must-remember facts, visual flows, traps and recall questions. No textbook waffle.</p>
-          <div class="hero-actions">
-            <button class="primary" id="startBtn">Start high-yield revision →</button>
-            <button class="secondary" id="randomBtn">Random topic</button>
-          </div>
+      <div class="study-toolbar">
+        <div class="toolbar-left">
+          <span class="mode-dot"></span>
+          <span>Focused study</span>
+          <span class="toolbar-sep">/</span>
+          <span>26 topics · 63 questions</span>
         </div>
-        <div class="hero-diagram">
-          <div class="orbit center">EVS</div>
-          <div class="orbit o1">🌍<small>Earth</small></div>
-          <div class="orbit o2">🌱<small>Bio</small></div>
-          <div class="orbit o3">⚖️<small>Laws</small></div>
-          <div class="orbit o4">♻️<small>Sustain</small></div>
-          <div class="orbit o5">⚠️<small>Hazards</small></div>
+        <div class="toolbar-actions">
+          <button class="secondary" id="startBtn">Start from beginning</button>
+          <button class="secondary" id="randomBtn">Random topic</button>
         </div>
-      </section>
-
-      <section class="quick-grid">
-        <article class="stat"><span>26</span><small>topics covered</small></article>
-        <article class="stat"><span>60+</span><small>MCQ traps & recalls</small></article>
-        <article class="stat"><span>⚡</span><small>high-yield first</small></article>
-        <article class="stat"><span>✓</span><small>progress saved locally</small></article>
-      </section>
+      </div>
 
       <section id="content" class="content"></section>
       <section id="practice" class="practice hidden"></section>
 
-      <footer>Built for rapid EVS CAT-II revision · source material supplied for this course</footer>
+      <footer>EVS CAT-II · built from the supplied course material</footer>
     </main>
   </div>
   <script src="app.js"></script>
